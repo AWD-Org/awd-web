@@ -49,4 +49,4 @@ Sitio estático en Next.js 15: `/` (español) y `/en` (inglés). Textos en `src/
 | `NEXT_PUBLIC_GSC_VERIFICATION` | Token de verificación de Search Console |
 | `SITE_NOINDEX=1` | Fuerza `noindex` |
 
-Los deploys de Netlify cuyo `CONTEXT` no sea `production` se publican con `noindex` automáticamente.
+Los deploys de preview (Vercel `VERCEL_ENV` ≠ `production`, o Netlify `CONTEXT` ≠ `production`) se publican con `noindex` automáticamente. La rama `dev` se revisa en el preview de Vercel.

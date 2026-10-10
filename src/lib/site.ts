@@ -19,9 +19,11 @@ export const AXOLOTLS = "https://reptilarioyajolotarioquetzal.com/";
 export const GA_ID = "AW-11564510788";
 export const GA_CONVERSION = "AW-11564510788/2KE2COqTsooaEMTcsYor";
 
-/** Netlify marks everything except the production deploy with another CONTEXT. */
+/** Vercel (VERCEL_ENV) and Netlify (CONTEXT) mark every non-production deploy; those stay noindex. */
 export const isIndexable = () => {
   if (process.env.SITE_NOINDEX === "1") return false;
+  const vercel = process.env.VERCEL_ENV;
+  if (vercel) return vercel === "production";
   const ctx = process.env.CONTEXT;
   return !ctx || ctx === "production";
 };
