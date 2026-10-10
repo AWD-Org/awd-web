@@ -1,15 +1,13 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
+import { SITE_URL, isIndexable } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
+  if (!isIndexable()) {
+    return { rules: [{ userAgent: "*", disallow: "/" }] };
+  }
   return {
-    rules: [
-      {
-        userAgent: "*",
-        allow: "/",
-        disallow: ["/api/"],
-      },
-    ],
-    sitemap: "https://www.amoxtli.tech/sitemap.xml",
-    host: "https://www.amoxtli.tech",
+    rules: [{ userAgent: "*", allow: "/", disallow: ["/api/"] }],
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   };
 }

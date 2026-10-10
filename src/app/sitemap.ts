@@ -1,57 +1,12 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
+import { urlFor } from "@/lib/site";
+
+const lastModified = new Date("2026-10-09");
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://www.amoxtli.tech";
-  const now = new Date();
-
+  const languages = { "es-MX": urlFor("es"), "en-US": urlFor("en") };
   return [
-    {
-      url: baseUrl,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/#meet-awd`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/#services`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#process`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/#projects`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#pricing`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/#testimonials`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/#initiatives`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
+    { url: urlFor("es"), lastModified, changeFrequency: "monthly", priority: 1, alternates: { languages } },
+    { url: urlFor("en"), lastModified, changeFrequency: "monthly", priority: 0.9, alternates: { languages } },
   ];
 }

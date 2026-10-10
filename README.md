@@ -34,3 +34,19 @@ npm run start
 - i18next translations in `src/locales/en/translation.json` and `src/locales/es/translation.json`.
 - Theme tokens in `src/theme/tokens.ts` and CSS variables in `src/app/globals.css`.
 - Images served via `next/image` for performance.
+
+## Rediseño (rama `dev`)
+
+Sitio estático en Next.js 15: `/` (español) y `/en` (inglés). Textos en `src/locales/es.ts` (fuente) y `en.ts`.
+
+### Variables de entorno
+| Variable | Uso |
+|---|---|
+| `SENDGRID_API_KEY` | Envío de leads desde `/api/lead` |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Número de WhatsApp (formato internacional, sin `+`) |
+| `NEXT_PUBLIC_WHATSAPP_MESSAGE` | Mensaje precargado |
+| `NEXT_PUBLIC_SITE_URL` | URL canónica (por defecto `https://www.amoxtli.tech`) |
+| `NEXT_PUBLIC_GSC_VERIFICATION` | Token de verificación de Search Console |
+| `SITE_NOINDEX=1` | Fuerza `noindex` |
+
+Los deploys de Netlify cuyo `CONTEXT` no sea `production` se publican con `noindex` automáticamente.
